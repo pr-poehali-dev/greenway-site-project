@@ -133,9 +133,34 @@ const BLOG = [
   { tag: 'Здоровье', title: 'Как составить рацион для детей', text: 'Советы шеф-повара по детскому питанию.', icon: 'HeartPulse' },
 ];
 
+const SERVICES = [
+  {
+    name: 'Индивидуальная сборка',
+    desc: 'Сами выбираете состав: нужные овощи, фрукты, молочка и зелень. Соберём корзину строго под ваши предпочтения и объём.',
+    price: 'от 1 500 ₽',
+    icon: 'PackageSearch',
+    image: 'https://cdn.poehali.dev/projects/a128bd59-af98-4d03-8f34-f4c7e076c394/files/3f51a41e-e9c9-4e6a-8f6c-6eafa3d28759.jpg',
+  },
+  {
+    name: 'Подписка на доставку',
+    desc: 'Еженедельная корзина по расписанию — 1 раз в неделю в удобный день. Скидка 15% на все наборы для подписчиков.',
+    price: 'от 1 690 ₽/нед',
+    icon: 'CalendarCheck',
+    image: 'https://cdn.poehali.dev/projects/a128bd59-af98-4d03-8f34-f4c7e076c394/files/c2252c7b-bb4b-4c4c-91ff-3b1e57e7ef57.jpg',
+  },
+  {
+    name: 'Подарочные наборы',
+    desc: 'Красиво упакованный набор из органических продуктов с персональной открыткой. Идеально для праздников и корпоративных подарков.',
+    price: 'от 2 900 ₽',
+    icon: 'Gift',
+    image: 'https://cdn.poehali.dev/projects/a128bd59-af98-4d03-8f34-f4c7e076c394/files/7791ece1-4ed3-4896-a3dc-c41ae717801d.jpg',
+  },
+];
+
 const NAV = [
   { id: 'about', label: 'О нас' },
   { id: 'products', label: 'Товары' },
+  { id: 'services', label: 'Услуги' },
   { id: 'team', label: 'Команда' },
   { id: 'blog', label: 'Блог' },
   { id: 'faq', label: 'Вопросы' },
@@ -347,6 +372,43 @@ export default function Index() {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section id="services" className="py-20">
+        <div className="container">
+          <div className="max-w-xl mb-12">
+            <p className="text-accent font-medium mb-3 uppercase tracking-widest text-sm">Услуги</p>
+            <h2 className="font-display text-4xl md:text-5xl font-semibold text-primary mb-4">
+              Больше, чем просто доставка
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              Подберём формат под ваш ритм жизни — разовый заказ, подписка или особенный подарок.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-8">
+            {SERVICES.map((s) => (
+              <div key={s.name} className="bg-card rounded-2xl border border-border overflow-hidden flex flex-col hover-scale transition-all">
+                <img src={s.image} alt={s.name} className="w-full h-52 object-cover" />
+                <div className="p-6 flex flex-col flex-1">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                      <Icon name={s.icon} size={20} className="text-primary" />
+                    </div>
+                    <h3 className="font-display text-xl font-semibold text-primary">{s.name}</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-6 flex-1">{s.desc}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="font-display text-xl font-semibold text-primary">{s.price}</span>
+                    <Button size="sm" onClick={() => scrollTo('contacts')} className="rounded-full">
+                      Заказать
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
