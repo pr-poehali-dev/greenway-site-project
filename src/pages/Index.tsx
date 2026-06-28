@@ -35,6 +35,7 @@ interface Product {
   name: string;
   desc: string;
   price: string;
+  oldPrice: string;
   icon: string;
   seasons: Season[];
   stock: 'in' | 'low' | 'out';
@@ -45,6 +46,7 @@ const PRODUCTS: Product[] = [
     name: 'Еженедельная корзина',
     desc: 'Собранный набор сезонных овощей и фруктов для всей семьи. 10–15 позиций, меняется в зависимости от сезона.',
     price: '1 990 ₽',
+    oldPrice: '2 490 ₽',
     icon: 'ShoppingBasket',
     seasons: ['spring', 'summer', 'autumn', 'winter'],
     stock: 'in',
@@ -53,6 +55,7 @@ const PRODUCTS: Product[] = [
     name: 'Фермерский завтрак',
     desc: 'Набор для идеального утра: яйца, свежий хлеб, сыр, йогурт, мёд и сезонные ягоды.',
     price: '1 390 ₽',
+    oldPrice: '1 690 ₽',
     icon: 'Egg',
     seasons: ['spring', 'summer', 'autumn'],
     stock: 'in',
@@ -61,6 +64,7 @@ const PRODUCTS: Product[] = [
     name: 'Детский набор',
     desc: 'Сбалансированный набор для здорового питания детей: фруктовое пюре, молоко, творог и полезные снеки.',
     price: '1 590 ₽',
+    oldPrice: '1 990 ₽',
     icon: 'Baby',
     seasons: ['spring', 'summer', 'autumn', 'winter'],
     stock: 'low',
@@ -69,6 +73,7 @@ const PRODUCTS: Product[] = [
     name: 'Суперфуд-бокс',
     desc: 'Набор из семян чиа, киноа, орехов, сушёных ягод и других суперфудов для энергии каждый день.',
     price: '1 890 ₽',
+    oldPrice: '2 290 ₽',
     icon: 'Sparkles',
     seasons: ['autumn', 'winter'],
     stock: 'in',
@@ -304,15 +309,27 @@ export default function Index() {
                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
                       <Icon name={p.icon} size={24} className="text-primary" />
                     </div>
-                    <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium ${stock.color}`}>
-                      <span className={`w-1.5 h-1.5 rounded-full ${stock.dot}`} />
-                      {stock.label}
-                    </span>
+                    <div className="flex items-center gap-2">
+                      {p.available && (
+                        <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-accent text-accent-foreground">
+                          Акция
+                        </span>
+                      )}
+                      <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium ${stock.color}`}>
+                        <span className={`w-1.5 h-1.5 rounded-full ${stock.dot}`} />
+                        {stock.label}
+                      </span>
+                    </div>
                   </div>
                   <h3 className="font-display text-2xl font-semibold text-primary mb-2">{p.name}</h3>
                   <p className="text-sm text-muted-foreground mb-6 flex-1">{p.desc}</p>
                   <div className="flex items-center justify-between">
-                    <span className="font-display text-2xl font-semibold text-primary">{p.price}</span>
+                    <div>
+                      <span className="font-display text-2xl font-semibold text-primary">{p.price}</span>
+                      {p.available && (
+                        <span className="ml-2 text-sm text-muted-foreground line-through">{p.oldPrice}</span>
+                      )}
+                    </div>
                     <Button
                       size="sm"
                       disabled={!p.available}
