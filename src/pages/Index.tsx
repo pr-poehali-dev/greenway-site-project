@@ -39,6 +39,7 @@ interface Product {
   price: string;
   oldPrice: string;
   icon: string;
+  image: string;
   seasons: Season[];
   stock: 'in' | 'low' | 'out';
 }
@@ -50,6 +51,7 @@ const PRODUCTS: Product[] = [
     price: '1 990 ₽',
     oldPrice: '2 490 ₽',
     icon: 'ShoppingBasket',
+    image: 'https://cdn.poehali.dev/projects/a128bd59-af98-4d03-8f34-f4c7e076c394/files/4c90ac91-f7e7-4f06-a104-6f9c0124e54b.jpg',
     seasons: ['spring', 'summer', 'autumn', 'winter'],
     stock: 'in',
   },
@@ -59,6 +61,7 @@ const PRODUCTS: Product[] = [
     price: '1 390 ₽',
     oldPrice: '1 690 ₽',
     icon: 'Egg',
+    image: 'https://cdn.poehali.dev/projects/a128bd59-af98-4d03-8f34-f4c7e076c394/files/c34fa700-ba3f-4538-b2cb-f659cff356a2.jpg',
     seasons: ['spring', 'summer', 'autumn'],
     stock: 'in',
   },
@@ -68,6 +71,7 @@ const PRODUCTS: Product[] = [
     price: '1 590 ₽',
     oldPrice: '1 990 ₽',
     icon: 'Baby',
+    image: 'https://cdn.poehali.dev/projects/a128bd59-af98-4d03-8f34-f4c7e076c394/files/4833c269-5e5c-4bf5-8639-d5ebe5f2d4d8.jpg',
     seasons: ['spring', 'summer', 'autumn', 'winter'],
     stock: 'low',
   },
@@ -77,6 +81,7 @@ const PRODUCTS: Product[] = [
     price: '1 890 ₽',
     oldPrice: '2 290 ₽',
     icon: 'Sparkles',
+    image: 'https://cdn.poehali.dev/projects/a128bd59-af98-4d03-8f34-f4c7e076c394/files/7fc81582-9b9b-4bb0-be2b-c652dbbf74e0.jpg',
     seasons: ['autumn', 'winter'],
     stock: 'in',
   },
@@ -301,26 +306,25 @@ export default function Index() {
               return (
                 <div
                   key={p.name}
-                  className={`bg-card rounded-2xl border border-border p-6 flex flex-col transition-all ${
+                  className={`bg-card rounded-2xl border border-border overflow-hidden flex flex-col transition-all ${
                     p.available ? 'hover-scale' : 'opacity-55'
                   }`}
                 >
-                  <div className="flex items-center justify-between mb-5">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                      <Icon name={p.icon} size={24} className="text-primary" />
-                    </div>
-                    <div className="flex items-center gap-2">
+                  <div className="relative">
+                    <img src={p.image} alt={p.name} className="w-full h-44 object-cover" />
+                    <div className="absolute top-3 right-3 flex items-center gap-2">
                       {p.available && (
-                        <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-accent text-accent-foreground">
+                        <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-accent text-accent-foreground shadow">
                           Акция
                         </span>
                       )}
-                      <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium ${stock.color}`}>
+                      <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium shadow ${stock.color}`}>
                         <span className={`w-1.5 h-1.5 rounded-full ${stock.dot}`} />
                         {stock.label}
                       </span>
                     </div>
                   </div>
+                  <div className="p-6 flex flex-col flex-1">
                   <h3 className="font-display text-2xl font-semibold text-primary mb-2">{p.name}</h3>
                   <p className="text-sm text-muted-foreground mb-6 flex-1">{p.desc}</p>
                   <div className="flex items-center justify-between">
@@ -338,6 +342,7 @@ export default function Index() {
                     >
                       {p.available ? 'В корзину' : 'Не сезон'}
                     </Button>
+                  </div>
                   </div>
                 </div>
               );
