@@ -44,7 +44,7 @@ const PRODUCTS: Product[] = [
   {
     name: 'Еженедельная корзина',
     desc: 'Собранный набор сезонных овощей и фруктов для всей семьи. 10–15 позиций, меняется в зависимости от сезона.',
-    price: '2 490 ₽',
+    price: '1 990 ₽',
     icon: 'ShoppingBasket',
     seasons: ['spring', 'summer', 'autumn', 'winter'],
     stock: 'in',
@@ -52,7 +52,7 @@ const PRODUCTS: Product[] = [
   {
     name: 'Фермерский завтрак',
     desc: 'Набор для идеального утра: яйца, свежий хлеб, сыр, йогурт, мёд и сезонные ягоды.',
-    price: '1 690 ₽',
+    price: '1 390 ₽',
     icon: 'Egg',
     seasons: ['spring', 'summer', 'autumn'],
     stock: 'in',
@@ -60,7 +60,7 @@ const PRODUCTS: Product[] = [
   {
     name: 'Детский набор',
     desc: 'Сбалансированный набор для здорового питания детей: фруктовое пюре, молоко, творог и полезные снеки.',
-    price: '1 990 ₽',
+    price: '1 590 ₽',
     icon: 'Baby',
     seasons: ['spring', 'summer', 'autumn', 'winter'],
     stock: 'low',
@@ -68,7 +68,7 @@ const PRODUCTS: Product[] = [
   {
     name: 'Суперфуд-бокс',
     desc: 'Набор из семян чиа, киноа, орехов, сушёных ягод и других суперфудов для энергии каждый день.',
-    price: '2 290 ₽',
+    price: '1 890 ₽',
     icon: 'Sparkles',
     seasons: ['autumn', 'winter'],
     stock: 'in',
