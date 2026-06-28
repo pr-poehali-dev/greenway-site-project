@@ -21,6 +21,8 @@ const HERO_IMG =
   'https://cdn.poehali.dev/projects/a128bd59-af98-4d03-8f34-f4c7e076c394/files/10a363eb-5e2f-4e39-bdb6-31a7256453ba.jpg';
 const CRATE_IMG =
   'https://cdn.poehali.dev/projects/a128bd59-af98-4d03-8f34-f4c7e076c394/files/5414562d-6bf9-479c-8878-911bd8ede716.jpg';
+const LOGO_IMG =
+  'https://cdn.poehali.dev/projects/a128bd59-af98-4d03-8f34-f4c7e076c394/files/9cd07fff-4f25-44ae-aae0-7c190edbb8dc.jpg';
 
 type Season = 'spring' | 'summer' | 'autumn' | 'winter';
 
@@ -155,9 +157,7 @@ export default function Index() {
       <header className="sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border">
         <div className="container flex items-center justify-between h-20">
           <button onClick={() => scrollTo('hero')} className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-              <Icon name="Leaf" size={22} className="text-primary-foreground" />
-            </div>
+            <img src={LOGO_IMG} alt="GreenWay" className="w-10 h-10 rounded-full object-cover" />
             <span className="font-display text-3xl font-semibold tracking-tight text-primary">
               GreenWay
             </span>
@@ -496,9 +496,7 @@ export default function Index() {
       <footer className="bg-primary text-primary-foreground py-12">
         <div className="container flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-full bg-primary-foreground/15 flex items-center justify-center">
-              <Icon name="Leaf" size={20} className="text-primary-foreground" />
-            </div>
+            <img src={LOGO_IMG} alt="GreenWay" className="w-9 h-9 rounded-full object-cover brightness-110" />
             <span className="font-display text-2xl font-semibold">GreenWay</span>
           </div>
           <p className="text-primary-foreground/70 text-sm">Природа у вас дома · © 2026 GreenWay</p>
